@@ -7,9 +7,30 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
-
+    <div id="app">
+        <p>{{ link }}</p>
+        <p><a href="{{link}}">Canal? - não funciona -</a></p>
+        <p><a v-bind:href="link">Canal</a></p>
+        <p><a :href="link">Forma reduzida no Código</a></p>
+        <p>
+            <!-- <input type="text" :value="nome"><br> não atualiza -->
+            <input type="text" v-model="nome"><br>
+            <span>{{ nome }}</span>
+        </p>
+    </div>
     <script>
-        // ...
+        new Vue({
+            el: "#app",
+            data: {
+                nome: "Isaque",
+                link: "https://www.youtube.com/channel/UCy9DdDXjlk_YLKG_r3ViXOg"
+            },
+            watch: {
+                nome(novoValor) {
+                    console.log(novoValor.toUpperCase());
+                }
+            }
+        })
     </script>
 </body>
 </html>
